@@ -28,7 +28,8 @@ public class MapCreator : MonoBehaviour
 		TextAsset[] maps = Resources.LoadAll<TextAsset>("Maps") as TextAsset[];	//Loads all the maps as textassets.
 		existingMapNames = new string[maps.Length];								//Sets the existingMapNames variable to the maps variable.
 
-		for(int x = 0; x < maps.Length; x++){			//Loops through the maps.
+		for(int x = 0; x < maps.Length; x++)
+		{			//Loops through the maps.
 			existingMapNames[x] = maps[x].name;			
 			Debug.Log(maps[x].name);
 		}
@@ -39,24 +40,30 @@ public class MapCreator : MonoBehaviour
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
-		if(Physics.Raycast(ray, out hit, 100.0f)){
-			if(hit.collider.name.Contains("Tile")){
-				if(selectedTile == null || selectedTile.gameObject != hit.collider.gameObject){
+		if(Physics.Raycast(ray, out hit, 100.0f))
+		{
+			if(hit.collider.name.Contains("Tile"))
+			{
+				if(selectedTile == null || selectedTile.gameObject != hit.collider.gameObject)
+				{
 					selectedTile = hit.collider.GetComponent<MapCreatorTile>();
 				}
 			}
 		}
 			
-		if(Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()){	//Is the player pressing left mouse button and not hovering over UI?
+		if(Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+		{	//Is the player pressing left mouse button and not hovering over UI?
 			PlaceTile();
 		}
 
-		if(Input.GetMouseButton(1) && !EventSystem.current.IsPointerOverGameObject()){	//Is the player pressing right mouse button and not hovering over UI?
+		if(Input.GetMouseButton(1) && !EventSystem.current.IsPointerOverGameObject())
+		{	//Is the player pressing right mouse button and not hovering over UI?
 			selectedTile.type = TileType.Empty;			
 			selectedTile.spriteRenderer.sprite = null;
 		}
 
-		if(selectedTile != null){
+		if(selectedTile != null)
+		{
 			ghostTile.transform.position = selectedTile.transform.position;
 		}
 	}
@@ -66,10 +73,12 @@ public class MapCreator : MonoBehaviour
 	{
 		selectedTile.type = curTile;
 
-		if(curTile == TileType.Wall){
+		if(curTile == TileType.Wall)
+		{
 			selectedTile.spriteRenderer.sprite = wallSprite;
 		}
-		if(curTile == TileType.SpawnPoint){
+		if(curTile == TileType.SpawnPoint)
+		{
 			selectedTile.spriteRenderer.sprite = spawnPointSprite;
 		}
 	}
@@ -79,10 +88,12 @@ public class MapCreator : MonoBehaviour
 	{
 		curTile = (TileType)System.Enum.Parse(typeof(TileType), type);
 
-		if(curTile == TileType.Wall){
+		if(curTile == TileType.Wall)
+		{
 			ghostTile.sprite = wallSprite;
 		}
-		if(curTile == TileType.SpawnPoint){
+		if(curTile == TileType.SpawnPoint)
+		{
 			ghostTile.sprite = spawnPointSprite;
 		}
 	}
@@ -92,9 +103,11 @@ public class MapCreator : MonoBehaviour
 	{
 		string text = "";
 
-		for(int x = 0; x < tilesParent.transform.childCount; x++){
+		for(int x = 0; x < tilesParent.transform.childCount; x++)
+		{
 			GameObject child = tilesParent.transform.GetChild(x).gameObject;
-			if(child.GetComponent<MapCreatorTile>().type != TileType.Empty){
+			if(child.GetComponent<MapCreatorTile>().type != TileType.Empty)
+			{
 				text += child.GetComponent<MapCreatorTile>().type.ToString();
 				text += "," + child.transform.position.x + "," + child.transform.position.y + "\n";
 			}
@@ -110,13 +123,16 @@ public class MapCreator : MonoBehaviour
 	{
 		int spawnPoints = 0;
 
-		for(int x = 0; x < tilesParent.transform.childCount; x++){
-			if(tilesParent.transform.GetChild(x).GetComponent<MapCreatorTile>().type == TileType.SpawnPoint){
+		for(int x = 0; x < tilesParent.transform.childCount; x++)
+		{
+			if(tilesParent.transform.GetChild(x).GetComponent<MapCreatorTile>().type == TileType.SpawnPoint)
+			{
 				spawnPoints++;
 			}
 		}
 
-		if(spawnPoints < 2){
+		if(spawnPoints < 2)
+		{
 			ui.SetErrorText("There must be a minimum of 2 spawn points on the map.");
 			return true;
 		}
@@ -127,14 +143,17 @@ public class MapCreator : MonoBehaviour
 	//Is there an error in the map name?
 	public bool HasNameError ()
 	{
-		foreach(string name in existingMapNames){
-			if(name == ui.mapName.text){
+		foreach(string name in existingMapNames)
+		{
+			if(name == ui.mapName.text)
+			{
 				ui.SetErrorText("Map name already exists.");
 				return true;
 			}
 		}
 
-		if(ui.mapName.text.Length == 0){
+		if(ui.mapName.text.Length == 0)
+		{
 			ui.SetErrorText("You have not named the map.");
 			return true;
 		} 
