@@ -18,11 +18,13 @@ public class MenuUI : MonoBehaviour
 	//Changes the page to either the menu page, or play page.
 	public void SetPage (string page)
 	{
-		if(page == "menu"){				
+		if(page == "menu")
+		{				
 			menuPage.active = true;
 			playPage.active = false;
 		}
-		if(page == "play"){
+		if(page == "play")
+		{
 			menuPage.active = false;
 			playPage.active = true;
 		}
@@ -32,7 +34,8 @@ public class MenuUI : MonoBehaviour
 	//The "maps" value, is an array of all the map names.
 	public void LoadMapButtons (string[] maps)
 	{
-		for(int x = 0; x < maps.Length; x++){												//Loops through the map names. And for each map...
+		for(int x = 0; x < maps.Length; x++)
+		{	//Loops through the map names. And for each map...
 			GameObject mapBut = Instantiate(mapButtonPrefab, mapButtonParent.transform.position, Quaternion.identity) as GameObject;	//Spawns the button.
 			mapBut.transform.parent = mapButtonParent.transform;							//Sets the button's parent to the mapButtonParent.
 			mapBut.transform.localScale = Vector3.one;										//Sets the button's scale to 1.
