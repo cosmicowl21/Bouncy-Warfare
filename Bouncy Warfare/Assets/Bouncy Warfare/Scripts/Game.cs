@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class Game : MonoBehaviour 
 {
 	[Header("Setup")]
-	public Color player1Color = Color.green;			//The colour that player 1's tank will be when the game starts.
-	public Color player2Color = Color.red;				//The colour that player 2's tank will be when the game starts.
+	public Color player1Color = Color.red;			//The colour that player 1's tank will be when the game starts.
+	public Color player2Color = Color.blue;				//The colour that player 2's tank will be when the game starts.
 	public bool oneHitKill = false;						//Will a projectile instantly kill its target?
 	public bool canDamageOwnTank = true;				//Can a tank damage itself by shooting a projectile?
 	public int respawnDelay = 1;						//The amount of time a player will wait between dying and respawning.
