@@ -69,7 +69,8 @@ public class Tank : MonoBehaviour
 	//Called by the Contols.cs script. When a player presses their shoot key, it calls this function, making the tank shoot.
 	public void Shoot ()
 	{
-		if(reloadTimer >= reloadSpeed){													//Is the reloadTimer more than or equals to the reloadSpeed? Have we waiting enough time to reload?
+		if(reloadTimer >= reloadSpeed)
+		{													//Is the reloadTimer more than or equals to the reloadSpeed? Have we waiting enough time to reload?
 			GameObject proj = Instantiate(projectile, muzzle.transform.position, Quaternion.identity) as GameObject;	//Spawns the projectile at the muzzle.
 			Projectile projScript = proj.GetComponent<Projectile>();					//Gets the Projectile.cs component of the projectile object.
 			projScript.tankId = id;														//Sets the projectile's tankId, so that it knows which tank it was shot by.
@@ -84,14 +85,17 @@ public class Tank : MonoBehaviour
 	//Called when the tank gets hit by a projectile. It sends over a "dmg" value, which is how much health the tank will lose. 
 	public void Damage (int dmg)
 	{
-		if(game.oneHitKill){	//Is the game set to one hit kill?
+		if(game.oneHitKill)
+		{	//Is the game set to one hit kill?
 			Die();				//If so instantly kill the tank.
 			return;
 		}
 
-		if(health - dmg <= 0){	//If the tank's health will go under 0 when it gets damaged.
+		if(health - dmg <= 0)
+		{	//If the tank's health will go under 0 when it gets damaged.
 			Die();				//Kill the tank since its health will be under 0.
-		}else{					//Otherwise...
+		}else
+		{					//Otherwise...
 			health -= dmg;		//Subtract the dmg from the tank's health.
 		}
 	}
@@ -99,10 +103,12 @@ public class Tank : MonoBehaviour
 	//Called when the tank's health is or under 0.
 	public void Die ()
 	{
-		if(id == 0){				//If the tank is player 1.
+		if(id == 0)
+		{				//If the tank is player 1.
 			game.player2Score++;	//Add 1 to player 2's score.
 		}
-		if(id == 1){				//If the tank is player 2.
+		if(id == 1)
+		{				//If the tank is player 2.
 			game.player1Score++;	//Add 1 to player 1's score.
 		}
 
