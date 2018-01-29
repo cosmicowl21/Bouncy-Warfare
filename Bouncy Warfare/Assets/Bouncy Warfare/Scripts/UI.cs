@@ -28,11 +28,13 @@ public class UI : MonoBehaviour
 
 	void Update ()
 	{
-		if(game.player1Tank != null){	//If player 1's tank exists.
+		if(game.player1Tank != null)
+		{	//If player 1's tank exists.
 			p1HealthBar.transform.position = game.player1Tank.transform.position + new Vector3(0, 2, 0);	//Sets the health bar to be just above player 1's tank.
 			p1HealthBar.value = game.player1Tank.health;													//Sets the value of the health bar to be the same as the tank's.
 		}
-		if(game.player2Tank != null){	//If player 2's tank exists.
+		if(game.player2Tank != null)
+		{	//If player 2's tank exists.
 			p2HealthBar.transform.position = game.player2Tank.transform.position + new Vector3(0, 2, 0);	//Sets the health bar to be just above player 2's tank.
 			p2HealthBar.value = game.player2Tank.health;													//Sets the value of the health bar to be the same as the tank's.
 		}	
@@ -47,9 +49,11 @@ public class UI : MonoBehaviour
 	{
 		winScreen.active = true;
 
-		if(winner == 0){
+		if(winner == 0)
+		{
 			winText.text = "<b><color=" + ToHex(game.player1Color) + ">PLAYER 1</color></b>\nWins The Game";
-		}else{
+		}else
+		{
 			winText.text = "<b><color=" + ToHex(game.player2Color) + ">PLAYER 2</color></b>\nWins The Game";
 		}
 	}
