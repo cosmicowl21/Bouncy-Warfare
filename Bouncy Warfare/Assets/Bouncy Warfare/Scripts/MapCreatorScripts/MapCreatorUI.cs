@@ -14,7 +14,8 @@ public class MapCreatorUI : MonoBehaviour
 	//Called when the SAVE & PLAY button gets pressed.
 	public void SaveAndPlay ()
 	{
-		if(!mapCreator.HasMapError() && !mapCreator.HasNameError()){
+		if(!mapCreator.HasMapError() && !mapCreator.HasNameError())
+		{
 			mapCreator.SaveMap();
 			PlayerPrefs.SetString("MapToLoad", mapName.text);
 			#if UNITY_EDITOR
