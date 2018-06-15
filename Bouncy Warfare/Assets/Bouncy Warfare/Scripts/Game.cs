@@ -42,7 +42,7 @@ public class Game : MonoBehaviour
 
 	void Start ()
 	{
-		//Load The Map
+		//Load The Map starts here
 		mapToLoad = PlayerPrefs.GetString("MapToLoad");									
 		TextAsset map = Resources.Load<TextAsset>("Maps/" + mapToLoad) as TextAsset;
 		LoadMap(map.text);
