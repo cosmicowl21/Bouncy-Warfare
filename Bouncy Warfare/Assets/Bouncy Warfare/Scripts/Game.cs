@@ -47,7 +47,7 @@ public class Game : MonoBehaviour
 		TextAsset map = Resources.Load<TextAsset>("Maps/" + mapToLoad) as TextAsset;
 		LoadMap(map.text);
 
-		//Tank Bools
+		//Tank Bool controls
 		player1Tank.canMove = true;
 		player1Tank.canShoot = true;
 
@@ -73,10 +73,11 @@ public class Game : MonoBehaviour
 	{
 		//Checking Scores
 		if(player1Score >= maxScore)
-        {   //Does player 1 reach the score amount to win the game?
-            WinGame(0);	//Player 1 wins the game.
+        {   	
+		//Does player 1 reach the score amount to win the game?
+           	 WinGame(0);	//Player 1 wins the game.
             
-		}		
+	}		
 		if(player2Score >= maxScore)
 		{	//Does player 2 reach the score amount to win the game?
 		    WinGame(1);					//Player 2 wins the game.
